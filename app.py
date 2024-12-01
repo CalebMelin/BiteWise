@@ -27,7 +27,7 @@ def load_csv_data(file_path):
     return pd.read_csv(file_path)
 
 # Use the correct path to your CSV file
-csv_file_path = r"C:\Users\Caleb\Documents\ENTI333\BiteWiseAI\groceryInventory.csv"
+csv_file_path = "groceryInventory.csv"
 grocery_inventory = load_csv_data(csv_file_path)
 
 # Filter the data to include only item_name, Price_CAD, and Brand
