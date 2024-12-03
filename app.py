@@ -10,17 +10,37 @@ load_dotenv()
 # Load the OpenAI client
 OpenAI.api_key = os.getenv("OPENAI_API_KEY")
 
-# Create a client object
-client = OpenAI()
-
 st.set_page_config(
     page_title="Bite Wise",
     page_icon="🍃",
     layout="centered"
+    
 )
 
-st.title('Bite Wise 🍃')
+# Inject custom CSS for the sidebar
+def inject_sidebar_css():
+    css = """
+    <style>
+        /* Sidebar background */
+        section[data-testid="stSidebar"] {
+            background-color: #DFFFD6; /* Light green */
+        }
+    </style>
+    """
+    st.markdown(css, unsafe_allow_html=True)
 
+# Call the function to apply the sidebar CSS
+inject_sidebar_css()
+
+# Create a client object
+client = OpenAI()
+
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    st.image("BiteWiseLogo.png", width=300)
+
+st.subheader('Bite Wise: Your Meal Planning and Shopping AI Friend!')
+st.write('To start the chat, you may introduce yourself, or specify what you are looking for, and your Bite Wise AI friend will help you out!')
 # Load the CSV file with st.cache_data
 @st.cache_data
 def load_csv_data(file_path):
